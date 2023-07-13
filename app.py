@@ -13,10 +13,11 @@ win.resizable(False, False)
 
 def openfile():
     file = askopenfile(filetypes=[('Word Files', '*.docx')])
+    time.sleep(1)
     if file:
-        destination_dir = askdirectory()
+        progress_label.config(text="Converting...")
+        destination_dir = askdirectory(title="Select the Destination Folder")
         if destination_dir:
-            progress_label.config(text="Converting...")
             time.sleep(2)
             convert(file.name, f"{destination_dir}/converted.pdf")
             showinfo("Done", "File successfully converted")
